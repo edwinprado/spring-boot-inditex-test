@@ -27,10 +27,10 @@ public class PriceServiceTest {
     private static final LocalDateTime DATE_2A = LocalDateTime.of(2020, 6, 14, 15, 0);
     private static final LocalDateTime DATE_2B = LocalDateTime.of(2020, 6, 14, 18, 30);
 
-    private static final LocalDateTime DATE_3A = LocalDateTime.of(2020, 6, 14, 0, 0);
+    private static final LocalDateTime DATE_3A = LocalDateTime.of(2020, 6, 15, 0, 0);
     private static final LocalDateTime DATE_3B = LocalDateTime.of(2020, 6, 15, 11, 0);
 
-    private static final LocalDateTime DATE_4A = LocalDateTime.of(2020, 6, 14, 16, 0);
+    private static final LocalDateTime DATE_4A = LocalDateTime.of(2020, 6, 15, 16, 0);
     private static final LocalDateTime DATE_4B = LocalDateTime.of(2020, 12, 31, 23, 59);
 
     private static final Double PRICE_1 = 35.5;
@@ -50,9 +50,9 @@ public class PriceServiceTest {
         given(priceListRepository.findByBrandIdAndProductId(BRAND_ID, PRODUCT_ID)).
                 willReturn(List.of(
                         new PriceList(1L, BRAND_ID, PRODUCT_ID, DATE_1A, DATE_1B, 0, PRICE_1, "EUR"),
-                        new PriceList(1L, BRAND_ID, PRODUCT_ID, DATE_2A, DATE_2B, 0, PRICE_2, "EUR"),
-                        new PriceList(1L, BRAND_ID, PRODUCT_ID, DATE_3A, DATE_3B, 0, PRICE_3, "EUR"),
-                        new PriceList(1L, BRAND_ID, PRODUCT_ID, DATE_4A, DATE_4B, 0, PRICE_4, "EUR")
+                        new PriceList(2L, BRAND_ID, PRODUCT_ID, DATE_2A, DATE_2B, 1, PRICE_2, "EUR"),
+                        new PriceList(3L, BRAND_ID, PRODUCT_ID, DATE_3A, DATE_3B, 1, PRICE_3, "EUR"),
+                        new PriceList(4L, BRAND_ID, PRODUCT_ID, DATE_4A, DATE_4B, 1, PRICE_4, "EUR")
                 ));
     }
 
@@ -92,8 +92,8 @@ public class PriceServiceTest {
     }
 
     @Test
-    void on15at21ShouldGetPrice4Test() {
-        final LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 15, 21, 0);
+    void on16at21ShouldGetPrice4Test() {
+        final LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 16, 21, 0);
         final PriceResponseDTO expectedPrice = new PriceResponseDTO(PRODUCT_ID, BRAND_ID, 4L, DATE_4A, DATE_4B, PRICE_4);
         final PriceResponseDTO actualResponse = priceService.getPriceResponse(applicationDate, PRODUCT_ID, BRAND_ID);
         assertThat(expectedPrice).usingRecursiveComparison().isEqualTo(actualResponse);

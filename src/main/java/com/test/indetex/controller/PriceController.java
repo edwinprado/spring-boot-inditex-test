@@ -1,8 +1,5 @@
 package com.test.indetex.controller;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.test.indetex.domain.PriceList;
 import com.test.indetex.model.PriceResponseDTO;
 import com.test.indetex.service.PriceService;
@@ -15,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -38,6 +38,6 @@ public class PriceController {
   public ResponseEntity<PriceResponseDTO> getPriceResponse(@RequestParam(required = false) final LocalDateTime applicationDate,
                                                            @RequestParam(required = false) final String productId,
                                                            @RequestParam(required = false) final String brandId) {
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    return new ResponseEntity<>(priceService.getPriceResponse(applicationDate, productId, brandId), HttpStatus.OK);
   }
 }
