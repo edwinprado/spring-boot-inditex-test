@@ -10,39 +10,40 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "PRICE_LIST")
+@Table(name = "price_list")
 public class PriceList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "PRICE_LIST_ID")
-    Long PriceListId;
+    @Column(name = "price_list_id")
+    private Long priceListId;
 
-    @Column(name = "BRAND_ID")
-    String brandId;
+    @Column(name = "brand_id")
+    private String brandId;
 
-    @Column(name = "PRODUCT_ID")
-    String productId;
+    @Column(name = "product_id")
+    private String productId;
 
-    @Column(name = "START_DATE")
-    LocalDateTime startDate;
+    @Column(name = "start_date")
+    private LocalDateTime startDate;
 
-    @Column(name = "END_DATE")
-    LocalDateTime endDate;
+    @Column(name = "end_date")
+    private LocalDateTime endDate;
 
-    @Column(name = "PRIORITY")
-    int priority;
+    @Column(name = "priority")
+    private int priority;
 
-    @Column(name = "PRICE")
-    Double price;
+    @Column(name = "price")
+    private Double price;
 
-    @Column(name= "CURENCY")
-    String currency;
+    @Column(name = "currency")
+    private String currency;
 
     public PriceList() {
 
     }
 
-    public PriceList(String brandId, String productId, LocalDateTime startDate, LocalDateTime endDate, int priority, Double price, String currency) {
+    public PriceList(final Long priceListId, final String brandId, final String productId, final LocalDateTime startDate, final LocalDateTime endDate, final int priority, final Double price, final String currency) {
+        this.priceListId = priceListId;
         this.brandId = brandId;
         this.productId = productId;
         this.startDate = startDate;
@@ -53,18 +54,18 @@ public class PriceList {
     }
 
     public Long getPriceListId() {
-        return PriceListId;
+        return priceListId;
     }
 
-    public void setPriceListId(Long priceListId) {
-        PriceListId = priceListId;
+    public void setPriceListId(final Long priceListId) {
+        this.priceListId = priceListId;
     }
 
     public String getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(String brandId) {
+    public void setBrandId(final String brandId) {
         this.brandId = brandId;
     }
 
@@ -72,7 +73,7 @@ public class PriceList {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(final String productId) {
         this.productId = productId;
     }
 
@@ -80,7 +81,7 @@ public class PriceList {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(final LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
@@ -88,7 +89,7 @@ public class PriceList {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(final LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
@@ -96,7 +97,7 @@ public class PriceList {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(final int priority) {
         this.priority = priority;
     }
 
@@ -104,7 +105,7 @@ public class PriceList {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(final Double price) {
         this.price = price;
     }
 
@@ -112,7 +113,7 @@ public class PriceList {
         return currency;
     }
 
-    public void setCurrency(String currency) {
+    public void setCurrency(final String currency) {
         this.currency = currency;
     }
 }
