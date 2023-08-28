@@ -26,6 +26,11 @@ public class PriceListToPriceResponseDTOConverterTest {
         final PriceResponseDTO expected = new PriceResponseDTO(productId, brandId, priceListId, startDate, endDate, price);
         final PriceList priceList = new PriceList(priceListId, brandId, productId, startDate, endDate, 0, price, "EUR");
         final PriceResponseDTO actual = converter.convert(priceList);
-        assertEquals(expected, actual);
+        assertEquals(expected.getPrice(), actual.getPrice());
+        assertEquals(expected.getPriceListId(), actual.getPriceListId());
+        assertEquals(expected.getBrandId(), actual.getBrandId());
+        assertEquals(expected.getStartDate(), actual.getStartDate());
+        assertEquals(expected.getEndDate(), actual.getEndDate());
+        assertEquals(expected.getProductId(), actual.getProductId());
     }
 }

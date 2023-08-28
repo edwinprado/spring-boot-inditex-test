@@ -12,7 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 @SpringBootTest
@@ -61,7 +61,7 @@ public class PriceServiceTest {
         final LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 14, 10, 0);
         final PriceResponseDTO expectedPrice = new PriceResponseDTO(PRODUCT_ID, BRAND_ID, 1L, DATE_1A, DATE_1B, PRICE_1);
         final PriceResponseDTO actualResponse = priceService.getPriceResponse(applicationDate, PRODUCT_ID, BRAND_ID);
-        assertEquals(expectedPrice, actualResponse);
+        assertThat(expectedPrice).usingRecursiveComparison().isEqualTo(actualResponse);
     }
 
     @Test
@@ -69,7 +69,7 @@ public class PriceServiceTest {
         final LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 14, 16, 0);
         final PriceResponseDTO expectedPrice = new PriceResponseDTO(PRODUCT_ID, BRAND_ID, 2L, DATE_2A, DATE_2B, PRICE_2);
         final PriceResponseDTO actualResponse = priceService.getPriceResponse(applicationDate, PRODUCT_ID, BRAND_ID);
-        assertEquals(expectedPrice, actualResponse);
+        assertThat(expectedPrice).usingRecursiveComparison().isEqualTo(actualResponse);
 
     }
 
@@ -78,7 +78,7 @@ public class PriceServiceTest {
         final LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 14, 21, 0);
         final PriceResponseDTO expectedPrice = new PriceResponseDTO(PRODUCT_ID, BRAND_ID, 1L, DATE_1A, DATE_1B, PRICE_1);
         final PriceResponseDTO actualResponse = priceService.getPriceResponse(applicationDate, PRODUCT_ID, BRAND_ID);
-        assertEquals(expectedPrice, actualResponse);
+        assertThat(expectedPrice).usingRecursiveComparison().isEqualTo(actualResponse);
 
     }
 
@@ -87,7 +87,7 @@ public class PriceServiceTest {
         final LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 15, 10, 0);
         final PriceResponseDTO expectedPrice = new PriceResponseDTO(PRODUCT_ID, BRAND_ID, 3L, DATE_3A, DATE_3B, PRICE_3);
         final PriceResponseDTO actualResponse = priceService.getPriceResponse(applicationDate, PRODUCT_ID, BRAND_ID);
-        assertEquals(expectedPrice, actualResponse);
+        assertThat(expectedPrice).usingRecursiveComparison().isEqualTo(actualResponse);
 
     }
 
@@ -96,6 +96,6 @@ public class PriceServiceTest {
         final LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 15, 21, 0);
         final PriceResponseDTO expectedPrice = new PriceResponseDTO(PRODUCT_ID, BRAND_ID, 4L, DATE_4A, DATE_4B, PRICE_4);
         final PriceResponseDTO actualResponse = priceService.getPriceResponse(applicationDate, PRODUCT_ID, BRAND_ID);
-        assertEquals(expectedPrice, actualResponse);
+        assertThat(expectedPrice).usingRecursiveComparison().isEqualTo(actualResponse);
     }
 }
